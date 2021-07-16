@@ -41,7 +41,7 @@ function CookieShop (location,minPersonPerHour,maxPersonPerHour,avgCookieSalePer
   this.arrayC=[];
   this.openWorkingHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
   this.eqRandomP = function(){
-    let randomP=Math.floor(Math.random()*(this.maxPersonPerHour-this.minPersonPerHour)+this.minPersonPerHour);
+    let randomP=Math.floor(Math.random()*(this.maxPersonPerHour-this.minPersonPerHour+1)+this.minPersonPerHour);
     return randomP;};
   this.eqCookiesPerHour=function(){
     let cookieXrandomP =Math.floor(this.eqRandomP()*this.avgCookieSalePerson);
@@ -65,7 +65,7 @@ CookieShop.prototype.loopPrint=function(){
   document.getElementById('hourlyOrder').appendChild(locatioPrint);
   for (let i = 0; i < this.openWorkingHours.length;i++){
     let licookie=document.createElement('li');
-    let textCookie=document.createTextNode(this.openWorkingHours[i]+': '+this.arrayCookie()[i]+'cookies');
+    let textCookie=document.createTextNode(this.openWorkingHours[i]+': '+this.arrayCookie()[i]+' cookies');
     licookie.appendChild(textCookie);
     document.getElementById('hourlyOrder').appendChild(licookie);
   }
@@ -73,9 +73,17 @@ CookieShop.prototype.loopPrint=function(){
 
 
 let Seattle=new CookieShop('Seattle',23,65,6.3);
-let tokyo=new CookieShop('tokyo',23,65,6.3);
+let tokyo=new CookieShop('tokyo',3,24,1.2);
+let Dubai=new CookieShop('Dubai',11,38,3.7);
+let Paris=new CookieShop('Paris',20,38,2.3);
+let Lima=new CookieShop('Lima',2,16,4.6);
+
+
 
 
 Seattle.loopPrint();
 tokyo.loopPrint();
+Dubai.loopPrint();
+Paris.loopPrint();
+Lima.loopPrint();
 
