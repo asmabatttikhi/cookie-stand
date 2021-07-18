@@ -1,6 +1,9 @@
 'use strict';
 
 let openWorkingHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
+let shops=[];
+let dialyLocationTotalTable=0;
+
 
 function CookieShop (location,minPersonPerHour,maxPersonPerHour,avgCookieSalePerson){
   this.location=location;
@@ -8,25 +11,28 @@ function CookieShop (location,minPersonPerHour,maxPersonPerHour,avgCookieSalePer
   this.maxPersonPerHour=maxPersonPerHour;
   this.avgCookieSalePerson=avgCookieSalePerson;
   this.arrayC=[];
-
-  this.eqRandomP = function(){
-    let randomP=Math.floor(Math.random()*(this.maxPersonPerHour-this.minPersonPerHour+1)+this.minPersonPerHour);
-    return randomP;};
-  this.eqCookiesPerHour=function(){
-    let cookieXrandomP =Math.floor(this.eqRandomP()*this.avgCookieSalePerson);
-    return cookieXrandomP;
-  };
-  this.arrayCookie=function(){
-    for (let hours = 0; hours < openWorkingHours.length; hours++) {
-      let totalCookie=this.eqCookiesPerHour();
-      this.arrayC.push(totalCookie);
-    }
-    return this.arrayC;
-  };
+  this.dialyLocationTotalArray=0;
+  shops.push(this);
 }
 
 
+CookieShop.prototype.eqRandomP = function(){
+  let randomP=Math.floor(Math.random()*(this.maxPersonPerHour-this.minPersonPerHour+1)+this.minPersonPerHour);
+  return randomP;
+};
 
+CookieShop.prototype.eqCookiesPerHour=function(){
+  let cookieXrandomP =Math.floor(this.eqRandomP()*this.avgCookieSalePerson);
+  return cookieXrandomP;
+};
+
+CookieShop.prototype.arrayCookie=function(){
+  for (let hours = 0; hours < openWorkingHours.length; hours++) {
+    let totalCookie=this.eqCookiesPerHour();
+    this.arrayC.push(totalCookie);
+  }
+  return this.arrayC;
+};
 
 
 
@@ -55,11 +61,11 @@ CookieShop.prototype.render=function(){
 
   }
   //console.log( DLTotal);
-  let totalDLTotal=0;
+
   let tableDLT = document.createElement ('td');
   tableDLT.textContent=DLTotal;
   trLocation.appendChild(tableDLT);
-  totalDLTotal+=DLTotal;
+  this.dialyLocationTotalArray=DLTotal;
 };
 
 
@@ -86,9 +92,6 @@ function tableHeaderTh (c1,c2,c3){
 
 
 
-// footer function
-
-
 let Seattle=new CookieShop('Seattle',23,65,6.3);
 let Tokyo=new CookieShop('Tokyo',3,24,1.2);
 let Dubai=new CookieShop('Dubai',11,38,3.7);
@@ -102,6 +105,37 @@ Tokyo.render();
 Dubai.render();
 Paris.render();
 Lima.render();
+
+tableFooterTh ();
+// footer function
+function tableFooterTh (){
+  let trfooter=document.createElement('tr');
+  document.getElementById('table').appendChild(trfooter);
+
+  let thfooter=document.createElement('th');
+  trfooter.appendChild(thfooter);
+  thfooter.textContent='Totals ';
+
+  for (let h = 0; h < openWorkingHours.length; h++) {
+    let totalCookieHour=0;
+
+    for (let i = 0; i < shops.length; i++) {
+      //console.log(shops[i].arrayC[h]);
+      totalCookieHour+=shops[i].arrayC[h];
+
+    }
+    thfooter=document.createElement('th');
+    trfooter.appendChild(thfooter);
+    thfooter.textContent=totalCookieHour;
+
+  }
+  for (let d = 0; d < shops.length; d++) {
+    dialyLocationTotalTable+=shops[d].dialyLocationTotalArray;
+  }
+  let thfooterdialylocation=document.createElement('th');
+  trfooter.appendChild(thfooterdialylocation);
+  thfooterdialylocation.textContent=dialyLocationTotalTable;
+}
 
 
 
