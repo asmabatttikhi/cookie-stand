@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 table{
      border-collapse: collapse;
     
@@ -6,3 +9,128 @@ table{
 td, th {
     border: 1px solid;
 }
+
+header{
+    border-bottom: 1px solid #cfcfcf;
+}
+#div1,#div2{
+    float:left;
+    width:45%;
+}
+
+#div3{
+    clear:both;
+    text-align: center;
+    background-color: rgb(138, 62, 62);
+    color:whitesmoke;
+    height: 50px;
+    padding: 2px;
+    
+}
+
+#img1{
+    height: 50px;
+}
+
+span{
+    font-family: 'TradeGothicLTStd-Bold',sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+ ul li {
+    display: inline;
+    padding:100px;
+    left:10;
+   text-align: center;
+
+}
+
+main ol li{
+
+     list-style-type:none;
+     padding: 20px;
+
+
+ }
+
+ main{
+     position: relative;
+     width: 400px;
+    height: 200px;
+    max-width: 500px;
+    margin: auto;
+
+ }
+ main ol{
+ display: flex;
+  justify-content: center;
+ }
+ 
+footer nav{
+   
+     clear:both;
+     background: rgb(39, 39, 39);
+     display: flex;
+     justify-content: center;
+  
+ }
+
+footer nav ol{
+    list-style-type:none;
+    font-size: small;
+    color:seashell;
+    padding: 20px;
+    margin: 10px;
+    
+ 
+    
+}
+
+ footer{
+  
+    justify-content: center;
+    margin-top: 100px;
+ }
+
+ #imgsalmon{
+     position: absolute;
+     height: 250px;
+     top: 01%;
+  left: 10%;
+  opacity: 0.5;
+  z-index: -1;
+
+ }
+ .imgclass{
+    height:50px
+ }
+
+ #table{
+     text-decoration: none;
+     color: rgb(85, 182, 101);
+     font-size: large;
+     border-style: dotted;
+     font-size: small;
+     padding: 0px;
+     margin: 0px;
+ 
+ }
+
+ #table1{
+    text-decoration: none;
+    color: rgb(208, 218, 209);
+    font-size: large;
+    font-size: large;
+ }
+
+
+ 
+
+
+
+
+ 
+
+
