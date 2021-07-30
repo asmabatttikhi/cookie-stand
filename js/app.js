@@ -99,7 +99,7 @@ function tableHeaderTh (c1,c2,c3){
 
 
 
-tableHeaderTh('',openWorkingHours,'Daily Location Total');
+tableHeaderTh('Location',openWorkingHours,'Daily Location Total');
 
 
 
