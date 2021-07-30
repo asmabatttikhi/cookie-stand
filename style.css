@@ -1,6 +1,9 @@
 *{
     box-sizing: border-box;
 }
+
+body {background-color: rgb(190, 173, 166);}
+
 table{
      border-collapse: collapse;
     
@@ -11,11 +14,15 @@ td, th {
 }
 
 header{
-    border-bottom: 1px solid #cfcfcf;
+    border-bottom: 10px solid #cfcfcf;
 }
 #div1,#div2{
     float:left;
     width:45%;
+    font-family:'Sofia', sans-serif;
+    color: brown;
+    font-size: larger;
+
 }
 
 #div3{
@@ -51,16 +58,14 @@ main ol li{
 
      list-style-type:none;
      padding: 20px;
+     font-family: Georgia, Times;
 
 
  }
 
  main{
      position: relative;
-     width: 400px;
     height: 200px;
-    max-width: 500px;
-    margin: auto;
 
  }
  main ol{
@@ -91,7 +96,7 @@ footer nav ol{
  footer{
   
     justify-content: center;
-    margin-top: 250px;
+    margin-top: 100px;
  }
 
  #imgsalmon{
@@ -108,23 +113,30 @@ footer nav ol{
  }
 
  #table{
-     text-decoration: none;
-     color: rgb(85, 182, 101);
-     font-size: large;
-     border-style: dotted;
+     color: rgb(208, 218, 209);
      font-size: small;
-     padding: 0px;
-     margin: 0px;
+     padding: 10px;
      font-family:Verdana, Geneva, Tahoma, sans-serif;
- 
+     background-color: rgb(53, 31, 38);
+     width:25%
+     
  }
 
  #table1{
     text-decoration: none;
     color: rgb(208, 218, 209);
     font-size: large;
-
  }
+
+ form {
+     padding: 20px;
+     width: 30%;
+     color: rgb(159, 173, 162);
+     background-color: rgb(53, 31, 38);
+     float: left;
+ 
+ }
+
 
 
  

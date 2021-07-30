@@ -108,7 +108,7 @@ tableHeaderTh('Location',openWorkingHours,'Daily Location Total');
 
 let form=document.getElementById('form');
 if (form!=null){
-form.addEventListener('submit',submitter);
+  form.addEventListener('submit',submitter);
 }
 function submitter(event){
   event.preventDefault();
