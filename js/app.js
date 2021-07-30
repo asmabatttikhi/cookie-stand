@@ -40,6 +40,9 @@ CookieShop.prototype.arrayCookie=function(){
 CookieShop.prototype.render=function(){
   let tableCookie=document.getElementById('table');
   let trLocation=document.createElement('tr');
+  if (tableCookie===null){
+    return;
+  }
   tableCookie.appendChild(trLocation);
   //location
   let locationTd=document.createElement('td');
@@ -73,7 +76,11 @@ CookieShop.prototype.render=function(){
 function tableHeaderTh (c1,c2,c3){
   //row
   let tr=document.createElement('tr');
-  document.getElementById('table').appendChild(tr);
+  let table=document.getElementById('table');
+  if (table === null){
+    return ;
+  }
+  table.appendChild(tr);
   //colomn
   let locationTh=document.createElement('th');
   locationTh.textContent=c1;
@@ -92,25 +99,46 @@ function tableHeaderTh (c1,c2,c3){
 
 
 
-let Seattle=new CookieShop('Seattle',23,65,6.3);
-let Tokyo=new CookieShop('Tokyo',3,24,1.2);
-let Dubai=new CookieShop('Dubai',11,38,3.7);
-let Paris=new CookieShop('Paris',20,38,2.3);
-let Lima=new CookieShop('Lima',2,16,4.6);
-
 tableHeaderTh('',openWorkingHours,'Daily Location Total');
 
-Seattle.render();
-Tokyo.render();
-Dubai.render();
-Paris.render();
-Lima.render();
 
-tableFooterTh ();
+
+
+
+
+let form=document.getElementById('form');
+
+form.addEventListener('submit',submitter);
+
+function submitter(event){
+  event.preventDefault();
+
+  let tablelocation = (event.target.nameLocation.value);
+  let tableMin = (event.target.minShop.value);
+  let tableMax = (event.target.maxShop.value);
+  let tableaverage = (event.target.averageShop.value);
+  console.log(event);
+  let inputShop=new CookieShop(tablelocation,tableMin,tableMax,tableaverage);
+  inputShop.render();
+  let footer=document.getElementById('footer');
+  if (footer){
+    footer.remove();
+  }
+  tableFooterTh ();
+
+
+}
+
+
 // footer function
 function tableFooterTh (){
   let trfooter=document.createElement('tr');
-  document.getElementById('table').appendChild(trfooter);
+  trfooter.id='footer';
+  let table=document.getElementById('table');
+  if(table===null){
+    return;
+  }
+  table.appendChild(trfooter);
 
   let thfooter=document.createElement('th');
   trfooter.appendChild(thfooter);
@@ -136,7 +164,3 @@ function tableFooterTh (){
   trfooter.appendChild(thfooterdialylocation);
   thfooterdialylocation.textContent=dialyLocationTotalTable;
 }
-
-
-
-
